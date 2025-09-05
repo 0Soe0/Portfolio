@@ -80,7 +80,7 @@ export const StarBackground = () => {
     <>
       <div className='fixed inset-0 overflow-hidden pointer-events-none z-0'>
         {stars.map((star) => (
-          <div key = {star.id} className = 'star animate-pulse-subtle' style = {{
+          <div key = {star.id} className='star animate-pulse-subtle' style = {{
             width: star.size + 'px', //easier way to do it just using the variable and adding 'px'
             height: `${star.size}px`, // backticks are used to be able to use the star.size variable (js) inside of a string
             left: `${star.x}%`,
@@ -91,7 +91,7 @@ export const StarBackground = () => {
         ))}
 
         {meteors.map((meteor) => (
-          <div key = {meteor.id} className = 'meteor animate-meteor' style = {{
+          <div key = {meteor.id} className='meteor animate-meteor' style = {{
             width: meteor.size + 'px', // multiply meteor.size * 50 to make it 'longer'
             height: `${meteor.size}px`,
             left: `${meteor.x}%`,

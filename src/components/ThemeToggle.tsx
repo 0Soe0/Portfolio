@@ -2,7 +2,12 @@ import {useState, useEffect} from 'react';
 import {Sun, Moon} from 'lucide-react';
 import {cn} from '../lib/utils';
 
-export const ThemeToggle = () => {
+//Props to identify whether the toggle is for desktop or mobile
+interface ThemeToggleProps {
+  variant?: 'desktop' | 'mobile';
+}
+
+export const ThemeToggle = ({ variant = 'desktop' }: ThemeToggleProps) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   //Checking the saved theme on local storage to remember it when reloading the page
@@ -33,17 +38,29 @@ export const ThemeToggle = () => {
     }
   }
 
+  if (variant === 'desktop') {
+    return (
+      <button 
+        onClick={toggleTheme} 
+        className={cn(
+          "fixed max-sm:hidden top-2 right-5 z-50 p-2 rounded-full trasition-colors duration-300",
+          "focus:outline-hidden"
+        )}>
+        {isDarkMode ? <Sun className='h-6 w-6 text-yellow-300' /> : <Moon className='h-6 w-6 text-black' />}
+      </button>
+    );
+  }
+
   return (
-  <>
     <button 
       onClick={toggleTheme} 
       className={cn(
-        "fixed max-sm:hidden top-2 right-5 z-50 p-2 rounded-full trasition-colors duration-300",
-        "focus:outlin-hidden"
+        "p-2 rounded-full transition-colors duration-300",
+        "focus:outline-none",
+        "text-white/80 dark:text-foreground/80"
       )}>
-      {isDarkMode ? <Sun className='h-6 w-6 text-yellow-300' /> : <Moon className='h-6 w-6 text-blue-900' />}
+      Change Theme
     </button>
-  </>
-  )
+  );
 }
   

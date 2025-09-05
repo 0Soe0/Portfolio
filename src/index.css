@@ -12,9 +12,7 @@
 
   --color-card: hsl(var(--card));
 
-  --color-contact-text: hsl(var(--contact-text));
   --color-contact-button: hsl(var(--contact-button));
-  --color-contact-title: hsl(var(--contact-title));
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-subtle: pulse-subtle 4s ease-in-out infinite;
@@ -67,6 +65,15 @@
       opacity: 0;
     }
   }
+
+  @keyframes cloud {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }
 
 @layer base {
@@ -75,14 +82,11 @@
     --background-start: 30 100% 50%;
     --background-mid: 350 100% 65%;
     --background-end: 275 100% 65%;
-    --background-final: 222 47% 4%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
     --primary-foreground: 210 40% 98%;
-    --primary: 360, 100%, 100%;
-    --contact-text: 23 61.3% 81.6%;
-    --contact-button: 25.57, 100%, 53.53%;
-    --contact-title: 210%, 40%, 98%;
+    --primary: 360 100% 100%;
+    --contact-button: 350 99% 0%;
   }
 
   .dark {
@@ -111,8 +115,7 @@
     background: linear-gradient(to top left, 
       hsl(var(--background-start)), 
       hsl(var(--background-mid)), 
-      hsl(var(--background-end)),
-      hsl(var(--background-final))
+      hsl(var(--background-end))
     );
   }
 
@@ -148,7 +151,13 @@
 
 @utility text-glow {
   @apply relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  /* text-shadow: 0 0 10px rgba(167, 139, 250, 0.5); */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+@utility shadow-black {
+  @apply relative;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 @utility card-hover {
@@ -157,7 +166,6 @@
 
 @utility gradient-border {
   @apply relative rounded-md;
-  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
   background-clip: padding-box;
   border: 1px solid transparent;
 }
@@ -170,6 +178,14 @@
   @apply hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
 }
 
+@utility white-hover {
+  @apply hover:shadow-[0_0_10px_rgba(255,255,255,0.5)]
+}
+
+@utility black-hover {
+  @apply hover:shadow-[0_0_10px_rgba(0,0,0,0.5)]
+}
+
 @utility star {
   @apply absolute rounded-full bg-white;
   box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
@@ -178,6 +194,10 @@
 @utility meteor {
   @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+}
+
+@utility cloud {
+  animation: var(--animate-float);
 }
 
 #root {
