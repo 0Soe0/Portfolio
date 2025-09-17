@@ -1,57 +1,69 @@
 import { useState } from 'react';
-import {cn} from '../lib/utils';
+import {cn} from '../../lib/utils';
+
+// Import icons as components
+import { Html5Icon } from './assets/Html5Icon.tsx';
+import { CssIcon } from './assets/CssIcon.tsx';
+import { JavascriptIcon } from './assets/JavascriptIcon.tsx';
+import { ReactIcon } from './assets/ReactIcon.tsx';
+import { NextJsIcon } from './assets/NextJsIcon.tsx';
+import { TailwindCssIcon } from './assets/TailwindCssIcon.tsx';
+import { TypescriptIcon } from './assets/TypescriptIcon.tsx';
+import { BootstrapIcon } from './assets/BootstrapIcon.tsx';
+import { GitIcon } from './assets/GitIcon.tsx';
+import { GithubIcon } from './assets/GithubIcon.tsx';
 
 //Skills array
 const skills = [
   {
     name: 'HTML',
-    level: '65',
     category: 'Frontend', 
+    icon: Html5Icon,
   },
   {
     name: 'CSS',
-    level: '65',
     category: 'Frontend',
+    icon: CssIcon,
   },
   {
     name: 'JavaScript',
-    level: '55',
     category: 'Frontend',
+    icon: JavascriptIcon,
   },
   {
     name: 'React',
-    level: '50',
     category: 'Frontend',
+    icon: ReactIcon,
   },
   {
     name: 'Next.js',
-    level: '30',
     category: 'Frontend',
+    icon: NextJsIcon,
   },
   {
     name: 'Tailwind CSS',
-    level: '35',
     category: 'Frontend',
+    icon: TailwindCssIcon,
   },
   {
     name: 'TypeScript',
-    level: '55',
     category: 'Frontend',
+    icon: TypescriptIcon,
   },
   {
-    name: 'Boostrap',
-    level: '30',
+    name: 'Bootstrap',
     category: 'Frontend',
+    icon: BootstrapIcon,
   },
   {
     name: 'Git',
-    level: '20',
     category: 'Tools',
+    icon: GitIcon,
   },
   {
     name: 'GitHub',
-    level: '20',
     category: 'Tools',
+    icon: GithubIcon,
   }
 ]
 
@@ -92,17 +104,12 @@ export const SkillsSection = () => {
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {filteredSkills.map((skill, key) => (
-            <div key = {key} className='bg-card/10 dark:bg-card p-6 rounded-lg shadow-xs card-hover'>
-              <div className='text-left mb-4'>
+            <div key = {key} className='bg-card/10 dark:bg-card p-6 rounded-lg shadow-xs card-hover flex justify-between items-center'>
+              <div className='mb-4'>
                 <h3 className='text-lg font-semibold mb-2'>{skill.name}</h3>
               </div>
-              <div className= 'grid grid-cols-2 gap-2 items-center'>
-                <div className='w-full h-2 bg-secondary/50 rounded-full overflow-hidden'>
-                  <div className='h-2 bg-primary rounded-full origin-left'
-                     style = {{width: `${skill.level}%`}}>
-                  </div>
-                </div>
-                <span className='text-right pb-2 text-sm'>{skill.level}%</span>
+              <div>
+                <skill.icon className='w-10 h-10' props={{}}/>
               </div>
             </div>
           ))}

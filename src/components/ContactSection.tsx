@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react';
 import { Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { Button } from './Button';
+import { useForm, ValidationError } from '@formspree/react';
+import {toast} from 'react-hot-toast';
 
 type ContactInfo = {
   icon: React.ElementType;
@@ -111,7 +114,52 @@ const ContactForm = ({ contactForm: { name, type, value, message } }: { contactF
     </div>
   )
 
-export const ContactSection = () => (
+export const ContactSection = () => {
+  
+  //Formspree hook to handle the form submission
+  const [state, handleSubmit, reset] = useForm("mwpndedv")
+  
+  //This key is used to reset the form when the form is submitted, even though reset() should do the work, it could not, so we secure the deed
+  //adding the key, which causes the form to be re-rendered
+  const [formKey, setFormKey] = useState(0)
+
+  useEffect(() => {
+    if (state.succeeded) {
+      //Toast to show a success message when the form is submitted, custom
+      toast.custom((t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-custom-enter' : 'animate-custom-leave'
+          } max-w-md w-full bg-primary/10 dark:bg-primary shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-secondary ring-opacity-5`}
+        >
+          <div className="flex-1 w-0 p-4">
+            <div className="flex items-start">
+              <div className="ml-3 flex-1">
+                <p className="text-sm font-medium text-secondary">
+                  Message sent!
+                </p>
+                <p className="mt-1 text-sm text-secondary">
+                  Thank you for your message:) I will get back to you as soon as possible.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex border-l border-secondary">
+            <button
+              onClick={() => toast.dismiss(t.id)}
+              className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-secondary hover:text-secondary/70 focus:outline-none focus:ring-2 focus:ring-secondary/70"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      ))
+      reset()
+      setFormKey(prev => prev + 1)
+    }
+  }, [state.succeeded, reset])
+
+  return (
   <section id='contact' className='px-4 py-24 relative bg-secondary/30'>
     <div className='container mx-auto max-w-5xl'>
       <h2 className='text-3xl md:text-4xl font-bold text-center mb-10'>
@@ -128,13 +176,21 @@ export const ContactSection = () => (
         </div>
         <div className='bg-card/10 dark:bg-card p-8 rounded-lg shadow-xs'>
           <h3 className='text-2xl font-semibold mb-6'>Send a message</h3>
-          <form action="">
+          <form key={formKey} onSubmit={handleSubmit}>
             {formFields.map((field, index) => (
+              <>
               <ContactForm key={index} contactForm={field} />
+              <ValidationError 
+                prefix={field.name} 
+                field={field.type}
+                errors={state.errors}
+              />
+              </>   
             ))}
             <Button 
               type="submit" 
               className='w-full flex items-center justify-center gap2 mt-4'
+              disabled={!!state.submitting}
             >
               Send message
               <Send size={16} className='ml-2'/>
@@ -144,4 +200,4 @@ export const ContactSection = () => (
       </div>
     </div>
   </section>
-) 
+) }

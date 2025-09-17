@@ -90,7 +90,7 @@ export const ProjectsSection = () => (
           <div className='text-center mt-12'>
             <Button
             className='w-fit mx-auto flex items-center gap-2'
-            href='https://github.com/sophiafacal'
+            href='https://github.com/0Soe0/'
             target='_blank'
             >
               Check my GitHub <ArrowRight size ={20}/>
