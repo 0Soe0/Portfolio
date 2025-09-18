@@ -4,11 +4,11 @@ import { MenuIcon, XIcon } from 'lucide-react';
 import { ThemeToggle } from 'components';
 
 const navItems = [
-  {name: 'Home', href: '#hero'},
-  {name: 'About', href: '#about'},
-  {name: 'Skills', href: '#skills'},
-  {name: 'Projects', href: '#projects'},
-  {name: 'Contact', href: '#contact'},
+  {name: 'Home', href: '/#hero'},
+  {name: 'About', href: '/#about'},
+  {name: 'Skills', href: '/#skills'},
+  {name: 'Projects', href: '/#projects'},
+  {name: 'Contact', href: '/#contact'},
 ];
 
 export const Navbar = () => {
@@ -40,7 +40,7 @@ export const Navbar = () => {
       isScrolled ? 'py-3 bg-background/80 backdrop-blur-md shadow-xs' : 'py-5'
     )}>
       <div className='container flex items-center justify-between'>
-        <a href='#hero' className='text-xl font-bold text-primary flex items-center'>
+        <a href='/#hero' className='text-xl font-bold text-primary flex items-center'>
           <span className ='relative z-10'>
             <span className='shadow-black dark:text-glow text-foreground'>Sophia Facal</span> portfolio
           </span>
