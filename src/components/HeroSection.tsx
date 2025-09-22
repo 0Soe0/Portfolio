@@ -1,52 +1,18 @@
 import { ArrowDown } from 'lucide-react';
 import { Button } from './Button';
-import { Cloud } from './Cloud';
-import { useState, useEffect } from 'react';
-//import { ScrollClouds } from './ScrollClouds';
+import { ScrollClouds } from './ScrollClouds';
+import { useTheme } from '../contexts/ThemeContext';
+import { useMediaQuery } from 'react-responsive';
 
 export const HeroSection = () => {
-
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // maxScroll: how much scroll triggers full transition (adjust if needed)
-  const maxScroll = window.innerHeight; // full viewport height
-  const scrollProgress = Math.min(scrollY / maxScroll, 1); // 0 to 1
-  const offsetX = scrollProgress * window.innerWidth; // full screen slide
+  const { isDark } = useTheme();
+  const isXl = useMediaQuery({ minWidth: 1280 });
 
   return (
     <>
     <section id ='hero' className ='relative min-h-screen flex flex-col items-center justify-center px-4'>
-      {/*<ScrollClouds />*/}
-
-      {/* CLOUDS CONTAINER */}
-      <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex">
-        {/* LEFT cloud */}
-        <div
-          className="relative w-1/2 h-full transition-transform duration-0 ease-linear"
-          style={{ transform: `translateX(-${offsetX}px)` }}
-        >
-          <Cloud size="big" amountOfBlobs={6} />
-        </div>
-
-        {/* RIGHT cloud */}
-        <div
-          className="relative w-1/2 h-full transition-transform duration-0 ease-linear"
-          style={{ transform: `translateX(${offsetX}px)` }}
-        >
-          <Cloud size="big" amountOfBlobs={6} />
-        </div>
-      </div>
-
-      <div className='container max-w-4xl mx-auto text-center z-10'>
+      <div className='container max-w-4xl mx-auto text-center z-10 relative'>
+        {!isDark && isXl && <ScrollClouds/>}
         <div className ='space-y-6'>
           <h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
             <span className='text-white dark:text-foreground dark:opacity-0 dark:animate-fade-in'>Hey! I'm </span>
