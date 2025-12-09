@@ -1,21 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import { NotFound } from './pages/NotFound';
-import { Toaster } from 'react-hot-toast';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import { NotFound } from "./pages/NotFound";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-
   return (
     <>
-    <Toaster position='bottom-left' reverseOrder={false} />
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+      <Toaster position="bottom-left" reverseOrder={false} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

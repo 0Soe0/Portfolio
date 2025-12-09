@@ -78,7 +78,6 @@ export const Cloud = ({ className = '', size, amountOfBlobs }: CloudProps) => {
             left: formation.left,
             width: formation.blob.width,
             height: formation.blob.height,
-            // boxShadow: '0 2px 6px rgba(0, 0, 0, 0.8), 0 -2px 20px rgba(255, 165, 0, 0.3)',
           }}>
           </div>
         ))}

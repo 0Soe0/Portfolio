@@ -1,15 +1,13 @@
-import { StarBackground } from "components/StarBackground"
-import { NotFoundPage } from "components/NotFoundPage"
-import { Navbar } from "components/Navbar"
+import { StarBackground } from "components/StarBackground";
+import { NotFoundPage } from "components/NotFoundPage";
 
 export const NotFound = () => {
   return (
-    <div className='min-h-screen bg-background text-foreground overflow-x-hidden'>
-      <Navbar />
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <StarBackground />
       <main>
-        <NotFoundPage/>
+        <NotFoundPage />
       </main>
     </div>
-  )
-}
+  );
+};
