@@ -9,3 +9,4 @@ export { ContactSection } from './ContactSection';
 export { Footer } from './Footer';
 export { Cloud } from './Cloud';
 export { NotFoundPage } from './NotFoundPage';
+export { CertificatesSection } from './CertificatesSection';

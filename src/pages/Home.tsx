@@ -7,6 +7,7 @@ import {
   ProjectsSection,
   ContactSection,
   Footer,
+  CertificatesSection,
 } from "components";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />
+        <CertificatesSection />
         <ContactSection />
       </main>
 
