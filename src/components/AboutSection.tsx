@@ -84,7 +84,7 @@ export const AboutSection = () => {
                 <Button
                   className="hover:bg-primary/10 white-hover"
                   hollow
-                  href="/SophiaFacalCV.pdf"
+                  href="/CVSophiaFacal.pdf"
                   download
                 >
                   Download CV
