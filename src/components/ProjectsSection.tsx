@@ -36,6 +36,16 @@ const projects: Project[] = [
     gitHubLink: "https://github.com/0Soe0/EV-olutionCarsWebsite",
     active: false,
   },
+  {
+    id: 4,
+    title: "Adulting101",
+    description: "A page I made for a course I took, (Yo puedo programar 2026), with some changes I added later.",
+    image: "/projects/Adulting101.jpg",
+    tags: ["HTML", "CSS", "Javascript", "Boostrap"],
+    demoLink: "https://adulting101-ruddy.vercel.app/",
+    gitHubLink: "https://github.com/0Soe0/Adulting101",
+    active: true,
+  }
 ];
 
 type Project = {
