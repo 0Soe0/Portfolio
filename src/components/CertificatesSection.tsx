@@ -38,6 +38,21 @@ const certificates: Certificate[] = [
     name: "Hour of code with Minecraft",
     date: "20-05-2026",
     img: "/certificates/HourOfCodeMinecraftCertificate.jpg",
+  },
+  {
+    name: "CoderCup AI Participation Certificate",
+    date: "14-08-2026",
+    img: "/certificates/CoderCupAICertificate.png",
+  },
+  {
+    name: "Web Development Introduction",
+    date: "21-09-2026",
+    img: "/certificates/WebDevelopmentIntroductionCertificate.jpg",
+  },
+  {
+    name: "Yo Puedo Programar 2026 -DESEM Junior Achievement",
+    date: "16-10-2026",
+    img: "/certificates/YoPuedoProgramar2026Certificate.png",
   }
 ];
 
